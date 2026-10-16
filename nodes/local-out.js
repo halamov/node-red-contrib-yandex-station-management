@@ -28,8 +28,12 @@ module.exports = function(RED) {
             debugMessage(`input: ${JSON.stringify(input)}`)
 
             //reinit: полный сброс соединения с колонкой без деплоя Node-RED.
-            //Просто отправь любое сообщение на вход ноды (msg.payload не используется)
-            if ('reinit' === node.input) {
+            //Срабатывает в двух случаях:
+            // 1) во вход ноды выбрана команда "reinit" (msg.payload не используется);
+            // 2) в любом режиме, если в сообщении msg.reinit === true.
+            //В обоих случаях обычная обработка сообщения пропускается,
+            //т.к. соединение в этот момент ещё не поднято.
+            if ('reinit' === node.input || input.reinit === true) {
                 if (node.station && node.controller && node.controller.reinitDevice) {
                     let result = node.controller.reinitDevice(node.station, node.id);
                     debugMessage(`Reinit ${node.station}: ${result}`);
