@@ -1,7 +1,7 @@
 {
-  "name": "node-red-contrib-yandex-station-management",
-  "version": "0.3.12",
-  "description": "Local management of YandexStation using API on websockets",
+  "name": "node-red-contrib-yandex-station-management-halamov",
+  "version": "0.3.13",
+  "description": "Local management of YandexStation using API on websockets (fork of n0name45 with reinit command)",
   "main": "index.js",
   "scripts": {
     "test": "node --test test/*.test.js"

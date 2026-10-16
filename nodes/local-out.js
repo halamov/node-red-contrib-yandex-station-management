@@ -27,6 +27,18 @@ module.exports = function(RED) {
         node.on('input', (input) => {
             debugMessage(`input: ${JSON.stringify(input)}`)
 
+            //reinit: полный сброс соединения с колонкой без деплоя Node-RED.
+            //Просто отправь любое сообщение на вход ноды (msg.payload не используется)
+            if ('reinit' === node.input) {
+                if (node.station && node.controller && node.controller.reinitDevice) {
+                    let result = node.controller.reinitDevice(node.station, node.id);
+                    debugMessage(`Reinit ${node.station}: ${result}`);
+                } else {
+                    debugMessage('Reinit: no station or controller node');
+                }
+                return;
+            }
+
             if (node.station) {
                 var data = {};
                 //data.payload = input.payload;
