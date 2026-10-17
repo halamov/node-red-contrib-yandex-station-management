@@ -61,6 +61,14 @@
     <style>
         .label-long {min-width: 150px;width: 20%;}
         .online {display: inline-block; width: auto; vertical-align: middle;}
+            /* Выравнивание подписи и поля по вертикальному центру строки */
+        .red-ui-editor-dialog .form-row:has(> label){
+            display: flex;
+            align-items: center;
+        }
+        .red-ui-editor-dialog .form-row:has(> label) > label{
+            flex: 0 0 auto;
+        }
     </style> 
 
 
