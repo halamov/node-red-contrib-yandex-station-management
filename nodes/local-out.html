@@ -152,7 +152,13 @@
             width: auto;
             vertical-align: middle;
         }
-        </style>
+                /* msg.*-под-подпись — под основной надписью, не растягивает label (основная
+           надпись центрируется по строке штатно) */
+        .red-ui-editor-dialog label{position: relative;}
+        .red-ui-editor-dialog label > div.red-ui-debug-msg-type-string{
+            position: absolute; left: 0; top: 100%; margin: 0;
+        }
+    </style>
 
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-bookmark"></i>&nbsp;<span data-i18n="label.name"></span></label>
@@ -204,7 +210,7 @@
         <input type="hidden" id="node-input-payloadType">
     </div>
     <div class="form-row command_options command_options-tts">
-        <label class="label" for='node-input-ttsVoice'>
+        <label class="label" for='node-input-ttsVoice' style="padding-top: 7px;">
             <i class='fa fa-user'></i>&nbsp;<span data-i18n="label.voice"></span>
             <div class="red-ui-debug-msg-type-string" style="font-size: 10px; line-height: 1em;">msg.voice</div></label>
         <div style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
@@ -243,13 +249,13 @@
         </div>
     </div>
     <div class="form-row command_options command_options-tts">
-        <label for="node-input-ttsEffect" class="label l-width">
+        <label for="node-input-ttsEffect" class="label l-width" style="padding-top: 7px;">
             <i class="fa fa-magic"></i> <span data-i18n="label.effect"></span>
             <div class="red-ui-debug-msg-type-string" style="font-size: 10px; line-height: 1em;">msg.effect</div></label>
         <input type="text" id="node-input-ttsEffect" style="width: 70%;">
     </div>
     <div class="form-row command_options command_options-tts">
-        <label for="node-input-volume" class="label label-long" style="padding-top: 5px;">
+        <label for="node-input-volume" class="label label-long">
             <i class="fa fa-volume-up"></i>&nbsp;<span data-i18n="label.volume"></span>
             <div class="red-ui-debug-msg-type-string" style="font-size: 10px; line-height: 1em;">msg.volume</div></label>
         <input type="checkbox" id="node-input-volumeFlag" style="display: inline-block; width: auto; vertical-align: middle;">
