@@ -152,10 +152,6 @@
             width: auto;
             vertical-align: middle;
         }
-        /* Поля TTS (Text/Voice/Effect) — одна ширина, масштабируются с диалогом */
-        .command_options-tts .red-ui-typedInput-container {
-            width: 70%;
-        }
     </style>
 
     <div class="form-row">
@@ -250,7 +246,7 @@
         <label for="node-input-ttsEffect" class="label l-width">
             <i class="fa fa-magic"></i> <span data-i18n="label.effect"></span>
             <div class="red-ui-debug-msg-type-string" style="font-size: 10px;">msg.effect</div></label>
-        <input type="text" id="node-input-ttsEffect">
+        <input type="text" id="node-input-ttsEffect" style="width: 70%;">
     </div>
     <div class="form-row command_options command_options-tts">
         <label for="node-input-volume" class="label label-long">
