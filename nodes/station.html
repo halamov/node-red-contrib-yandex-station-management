@@ -257,15 +257,7 @@
         .label-long {min-width: 150px;width: 20%;}
         .online {display: inline-block; width: auto; vertical-align: middle;}
         .thin {margin: 4px 0;}
-            /* Выравнивание подписи и поля по вертикальному центру строки */
-        .red-ui-editor-dialog .form-row:has(> label){
-            display: flex;
-            align-items: center;
-        }
-        .red-ui-editor-dialog .form-row:has(> label) > label{
-            flex: 0 0 auto;
-        }
-    </style> 
+        </style> 
 
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-bookmark"></i>&nbsp;<span>Name</span></label>
@@ -276,7 +268,7 @@
         <input type="text" id="node-input-token" placeholder="token">
     </div>
     <div class="form-row">
-        <label for="node-input-station_id"><i class="fa fa-database"></i>&nbsp;<span>Station</span></label>
+        <label for="node-input-station_id" style="padding-top: 7px;"><i class="fa fa-database"></i>&nbsp;<span>Station</span></label>
         <div style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
             <div style="position: absolute;left: 0px; right: 40px;">
                 <select id="node-input-station_id" data-single="true" style="width: 100%"></select>
@@ -317,13 +309,13 @@
     <div class="form-row" style="margin-top: 0px; font-weight: 500">
         <label></label>
         <div style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
-            <span class="online" style="width:20%; text-align: center;">Active</span>
-            <span class="online" style="width:38%; text-align: center;">From</span>
-            <span class="online" style="width:38%; text-align: center;">To</span>
+            <span class="online" style="display:inline-block; width:20%; height:34px; line-height:34px; text-align: center;">Active</span>
+            <span class="online" style="display:inline-block; width:38%; height:34px; line-height:34px; text-align: center;">From</span>
+            <span class="online" style="display:inline-block; width:38%; height:34px; line-height:34px; text-align: center;">To</span>
         </div>
     </div>
     <div class="form-row">
-        <label for="node-input-monday"><i class="fa fa-clock-o"></i>&nbsp;<span>Monday</span></label>
+        <label for="node-input-monday" style="padding-top: 7px;"><i class="fa fa-clock-o"></i>&nbsp;<span>Monday</span></label>
         <div class="sheduler-block" style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
             <input type="checkbox" id="node-input-monday-sheduler" checked="checked" style="display: inline-block; width: 20%;">
             <select class="time-selector" style="width:37%" id="node-input-monday-start">
@@ -334,7 +326,7 @@
         </div>
     </div>
     <div class="form-row">
-        <label for="node-input-tuesday"><i class="fa fa-clock-o"></i>&nbsp;<span>Tuesday</span></label>
+        <label for="node-input-tuesday" style="padding-top: 7px;"><i class="fa fa-clock-o"></i>&nbsp;<span>Tuesday</span></label>
         <div class="sheduler-block" style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
             <input type="checkbox" id="node-input-tuesday-sheduler" checked="checked" style="display: inline-block; width: 20%;">
             <select class="time-selector" style="width:37%" id="node-input-tuesday-start">
@@ -345,7 +337,7 @@
         </div>
     </div>
     <div class="form-row">
-        <label for="node-input-wednesday"><i class="fa fa-clock-o"></i>&nbsp;<span>Wednesday</span></label>
+        <label for="node-input-wednesday" style="padding-top: 7px;"><i class="fa fa-clock-o"></i>&nbsp;<span>Wednesday</span></label>
         <div class="sheduler-block" style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
             <input type="checkbox" id="node-input-wednesday-sheduler" checked="checked" style="display: inline-block; width: 20%;">
             <select class="time-selector" style="width:37%" id="node-input-wednesday-start">
@@ -356,7 +348,7 @@
         </div>
     </div>
     <div class="form-row">
-        <label for="node-input-thursday"><i class="fa fa-clock-o"></i>&nbsp;<span>Thursday</span></label>
+        <label for="node-input-thursday" style="padding-top: 7px;"><i class="fa fa-clock-o"></i>&nbsp;<span>Thursday</span></label>
         <div class="sheduler-block" style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
             <input type="checkbox" id="node-input-thursday-sheduler" checked="checked" style="display: inline-block; width: 20%;">
             <select class="time-selector" style="width:37%" id="node-input-thursday-start">
@@ -367,7 +359,7 @@
         </div>
     </div>
     <div class="form-row">
-        <label for="node-input-friday"><i class="fa fa-clock-o"></i>&nbsp;<span>Friday</span></label>
+        <label for="node-input-friday" style="padding-top: 7px;"><i class="fa fa-clock-o"></i>&nbsp;<span>Friday</span></label>
         <div class="sheduler-block" style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
             <input type="checkbox" id="node-input-friday-sheduler" checked="checked" style="display: inline-block; width: 20%;">
             <select class="time-selector" style="width:37%" id="node-input-friday-start">
@@ -378,7 +370,7 @@
         </div>
     </div>
     <div class="form-row">
-        <label for="node-input-saturday"><i class="fa fa-clock-o"></i>&nbsp;<span>Saturday</span></label>
+        <label for="node-input-saturday" style="padding-top: 7px;"><i class="fa fa-clock-o"></i>&nbsp;<span>Saturday</span></label>
         <div class="sheduler-block" style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
             <input type="checkbox" id="node-input-saturday-sheduler" checked="checked" style="display: inline-block; width: 20%;">
             <select class="time-selector" style="width:37%" id="node-input-saturday-start">
@@ -389,7 +381,7 @@
         </div>
     </div>
     <div class="form-row">
-        <label for="node-input-sunday"><i class="fa fa-clock-o"></i>&nbsp;<span>Sunday</span></label>
+        <label for="node-input-sunday" style="padding-top: 7px;"><i class="fa fa-clock-o"></i>&nbsp;<span>Sunday</span></label>
         <div class="sheduler-block" style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
             <input type="checkbox" id="node-input-sunday-sheduler" checked="checked" style="display: inline-block; width: 20%;">
             <select class="time-selector" style="width:37%" id="node-input-sunday-start">

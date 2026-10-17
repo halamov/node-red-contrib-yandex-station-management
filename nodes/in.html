@@ -64,15 +64,7 @@
     <style>
         .label-long {min-width: 150px;width: 20%;}
         .online {display: inline-block; width: auto; vertical-align: middle;}
-            /* Выравнивание подписи и поля по вертикальному центру строки */
-        .red-ui-editor-dialog .form-row:has(> label){
-            display: flex;
-            align-items: center;
-        }
-        .red-ui-editor-dialog .form-row:has(> label) > label{
-            flex: 0 0 auto;
-        }
-    </style> 
+        </style> 
 
 
     <div class="form-row">
@@ -84,7 +76,7 @@
         <input type="text" id="node-input-token" placeholder="Token">
     </div>
     <div class="form-row">
-        <label for="node-input-station_id"><i class="fa fa-database"></i>&nbsp;<span>Station</span></label>
+        <label for="node-input-station_id" style="padding-top: 7px;"><i class="fa fa-database"></i>&nbsp;<span>Station</span></label>
         <div style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
             <div style="position: absolute;left: 0px; right: 40px;">
                 <select id="node-input-station_id" data-single="true" style="width: 100%"></select>
@@ -95,7 +87,7 @@
         </div>
     </div>
     <div class="form-row">
-        <label for="node-input-output"><i class="fa fa-arrow-circle-o-left"></i>&nbsp;<span>Output</span></label>
+        <label for="node-input-output" style="padding-top: 7px;"><i class="fa fa-arrow-circle-o-left"></i>&nbsp;<span>Output</span></label>
         <div style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
             <div style="position: absolute;left: 0px; right: 0px;">
                 <select id="node-input-output" data-single="true" style="width: 100%">
@@ -106,7 +98,7 @@
         </div>
     </div>
     <div class="form-row" id="node-homekitFormat">
-        <label for="node-input-homekitFormat"><i class="fa fa-arrow-circle-o-left"></i>&nbsp;<span>Homekit</span></label>
+        <label for="node-input-homekitFormat" style="padding-top: 7px;"><i class="fa fa-arrow-circle-o-left"></i>&nbsp;<span>Homekit</span></label>
         <div style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
             <div style="position: absolute;left: 0px; right: 0px;">
                 <select id="node-input-homekitFormat" data-single="true" style="width: 100%">

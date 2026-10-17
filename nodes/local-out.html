@@ -152,15 +152,7 @@
             width: auto;
             vertical-align: middle;
         }
-            /* Выравнивание подписи и поля по вертикальному центру строки */
-        .red-ui-editor-dialog .form-row:has(> label){
-            display: flex;
-            align-items: center;
-        }
-        .red-ui-editor-dialog .form-row:has(> label) > label{
-            flex: 0 0 auto;
-        }
-    </style>
+        </style>
 
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-bookmark"></i>&nbsp;<span data-i18n="label.name"></span></label>
@@ -171,7 +163,7 @@
         <input type="text" id="node-input-token" placeholder="">
     </div>
     <div class="form-row">
-        <label for="node-input-station_id"><i class="fa fa-database"></i>&nbsp;<span data-i18n="label.station"></span></label>
+        <label for="node-input-station_id" style="padding-top: 7px;"><i class="fa fa-database"></i>&nbsp;<span data-i18n="label.station"></span></label>
         <div style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
             <div style="position: absolute;left: 0; right: 40px;">
                 <select id="node-input-station_id" data-single="true" style="width: 100%"></select>
@@ -183,7 +175,7 @@
         </div>
     </div>
     <div class="form-row">
-        <label for="node-input-input"><i class="fa fa-arrow-circle-o-right"></i>&nbsp;<span data-i18n="label.command"></span></label>
+        <label for="node-input-input" style="padding-top: 7px;"><i class="fa fa-arrow-circle-o-right"></i>&nbsp;<span data-i18n="label.command"></span></label>
         <div style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
             <div style="position: absolute;left: 0px; right: 0px;">
                 <select id="node-input-input" data-single="true" style="width: 100%">
@@ -212,7 +204,7 @@
         <input type="hidden" id="node-input-payloadType">
     </div>
     <div class="form-row command_options command_options-tts">
-        <label class="label" for='node-input-ttsVoice'>
+        <label class="label" for='node-input-ttsVoice' style="padding-top: 5px;">
             <i class='fa fa-user'></i>&nbsp;<span data-i18n="label.voice"></span>
             <div class="red-ui-debug-msg-type-string" style="font-size: 10px; line-height: 1em;">msg.voice</div></label>
         <div style="display: inline-block;position: relative;width: 70%;height: 34px;vertical-align: top;">
