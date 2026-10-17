@@ -99,7 +99,7 @@
     $.getJSON('yandexdevices_' + config.id, function(data) {
       data.devices.forEach(device => {
         selector.append(`<option value="${device.id}">
-            ${device.name}(${device.id})
+            ${device.name} (${device.id})
              </option>`);
         $(`#node-input-station_id :contains(${currentId})`).attr('selected', 'selected');
       });

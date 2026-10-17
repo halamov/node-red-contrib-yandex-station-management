@@ -72,7 +72,7 @@
         $.getJSON('stations/'+config.id,function(data) {
             data.devices.forEach(device => {
             selector.append(`<option value="${device.id}"> 
-            ${device.name}(${device.id})
+            ${device.name} (${device.id})
              </option>`)
              $(`#node-input-station_id option[value=${currentId}]`).attr("selected", true); 
              (currentId == device.id && device.address)?$("#node-input-fixedAddress").attr("placeholder", device.address):$("#node-input-fixedAddress").attr("placeholder", "0.0.0.0");
@@ -92,7 +92,7 @@
         $.getJSON('stations/'+config.id,function(data) {
             data.devices.forEach(device => {
             selector.append(`<option value="${device.id}"> 
-            ${device.name}(${device.id})
+            ${device.name} (${device.id})
              </option>`)
              $(`#node-input-station_id :contains(${currentId})`).attr("selected", true); 
              (currentId == device.id && device.address)?$("#node-input-fixedAddress").attr("placeholder", device.address):$("#node-input-fixedAddress").attr("placeholder", "0.0.0.0");
