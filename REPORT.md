@@ -41,6 +41,7 @@
 | `0b3d0e4` | Station: подпись Phrase to say по центру обёрнутого поля (padding-top 7px) |
 | `21f9c16` | OUT: финальная донастройка двухстрочных подписей (msg.* под-строк) по центру строки |
 | `836b097` | IN: фикс чекбокса Unique messages — детерминированная видимость строк, дедупликация в обоих режимах Output |
+| `ac0a52a` | yandex-login: фикс утечки WebSocket — принудительное закрытие старых сокетов при close/deploy, single-flight reinit |
 
 ## Формы свойств: единый вид (коммит `a8c759f`)
 Проблема: в 4 из 5 `nodes/*.html` текст подписи стоял **внутри** тега иконки
@@ -158,9 +159,43 @@ hik: узел с `Output=status + uniqueFlag=true` — после перезаг
 Output→homekit→status — строки ведут себя стабильно, состояние чекбокса
 сохраняется.
 
+### Сокеты плодятся на деплое и reinit (yandex-login, коммит `ac0a52a`)
+Симптом: на тестовом сервере (`ss -tn | grep 1961`) накопилось 15
+ESTABLISHED-соединений на две станции (7 на Mini, 8 на вторую), все —
+процесс `node`. Соединения не закрывались ни после deploy, ни после reinit.
+
+Две независимые утечки в `yandex-login.js`:
+1. **deploy/restart (основная):** `onClose()` чистил таймеры и `deviceList`,
+   но **не закрывал WebSocket** — сокет оставался ESTABLISHED навсегда,
+   каждый деплой добавлял одну сироту;
+2. **быстрые reinit:** во время получения токена из облака (200–800 мс)
+   второй reinit запускал свой `makeConn`, а сокет первого reinit
+   оказывался сиротой (ссылка `device.ws` перезаписывалась, никто его
+   не закрывал).
+
+Исправлено:
+- `onClose()`: по каждому `device.ws` — `removeAllListeners()` +
+  `terminate()`, сброс таймеров (watchdog/ping/token);
+- `makeConn()`: переживший старый сокет (`readyState !== CLOSED`) рвётся
+  до создания нового;
+- `ws.on('close')`: guard `if (device.ws !== ws) return` — устаревший
+  сокет больше не триггерит reconnect;
+- `reinitDevice()`: `reinitInFlight` lock (single-flight) — повторный
+  reinit до завершения первого отвечает `reinit already in progress`,
+  флаг сбрасывается в `.finally()`.
+
+Проверка:
+- юнит-тесты **11/11** (2 новых: flow stop рвёт живые WS станций;
+  reinit single-flight рвёт старый сокет);
+- e2e на hik против живого WSS-сервера-имитации станции (5 reinit подряд,
+  задержка токена 300 мс): старая версия — до 3 сокетов одновременно,
+  3 остаются открытыми (FAIL); новая — максимум 1 (PASS);
+- live на hik: clean start = 2 сокета (по одному на станцию), после
+  deploy = 2 (до фикса становилось 3).
+
 ## Проверка
 - `node --check` на всех правленых `.js`
-- `node --test test/*.test.js` — **9/9 pass**
+- `node --test test/*.test.js` — **11/11 pass**
 
 ## Репозитории
 - GitHub: `halamov/node-red-contrib-yandex-station-management` (пуш по SSH, ключ `id_ed25519_github`)
