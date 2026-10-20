@@ -198,10 +198,8 @@ ESTABLISHED-соединений на две станции (7 на Mini, 8 на
 - `node --test test/*.test.js` — **11/11 pass**
 
 ## Репозитории
-- GitHub: `halamov/node-red-contrib-yandex-station-management` (пуш по SSH, ключ `id_ed25519_github`)
-- Forgejo: `Home/node-red-contrib-yandex-station-management` (home-nuc2:3000, org Home)
-  - Пуш по git-HTTP: access-токен `node-red-sync` (write:repository) как
-    `http://ТОКЕН:ТОКЕН@...` (пароль юзера по git-HTTP не работает)
+- GitHub: `halamov/node-red-contrib-yandex-station-management`
+- Внутреннее зеркало: `Home/node-red-contrib-yandex-station-management` (внутренний git, org Home)
 
 ## Установка у пользователя
 ```
