@@ -85,3 +85,22 @@ test('unique messages отключён: все сообщения идут', () 
     node.onMessage({ event: 'x' });
     assert.equal(sends.length, 2);
 });
+
+test('в msg подмешаны имя станции (station) и имя IN-ноды (_node)', () => {
+    const { node, sends, controller } = fixture({ output: 'status' });
+    controller.deviceList = [{ id: 'st', name: 'Станция-Тест' }];
+    node.name = 'IN Mini';
+    node.onMessage({ event: 'playerState', value: 'playing' });
+    assert.equal(sends.length, 1);
+    assert.equal(sends[0].station, 'Станция-Тест');
+    assert.equal(sends[0]._node, 'IN Mini');
+});
+
+test('station = id станции, если её нет в deviceList login-ноды', () => {
+    const { node, sends } = fixture({ output: 'homekit', homekitFormat: 'tv' });
+    node.name = 'IN2';
+    node.onMessage({ playing: true });
+    assert.equal(sends.length, 1);
+    assert.equal(sends[0].station, 'st');
+    assert.equal(sends[0]._node, 'IN2');
+});
